@@ -20,4 +20,3 @@ echo "✅ ConfigMap mis à jour avec succès !"
 kubectl rollout restart deployment front-deployment
 
 echo "✅ Le frontend a été redémarré proprement !"
-

@@ -1,6 +1,7 @@
 # Projet AutoScaling et IaC
 
 Pour créer l'infrastructure, nous avons mis en place des scripts d'automatisation.
+Penser a faire chmod +x sur les scripts pour donner les droits d'execution.
 
 ## Étapes à suivre :
 
@@ -36,8 +37,11 @@ Dans un terminal on lance
 kubectl get hpa –A
 ```
 Puis dans un autre on lance le script, stress-backend.sh :
-./stress-backend.sh
 
+
+```bash
+./stress-backend.sh
+```
 ---
 
 ### 4. Accéder au front-end

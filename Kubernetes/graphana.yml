@@ -31,6 +31,6 @@ spec:
     - protocol: TCP
       port: 3000      # Port interne du service
       targetPort: 3000  # Port auquel le container écoute
-      nodePort: 30000  # Choisis un NodePort libre (ex: 30000)
+      nodePort: 30000  
   type: NodePort
 

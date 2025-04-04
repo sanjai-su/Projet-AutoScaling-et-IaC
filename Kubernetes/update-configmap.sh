@@ -9,14 +9,13 @@ if [ -z "$NEW_IP" ]; then
     exit 1
 fi
 
-echo "✅ Nouvelle IP du backend : $NEW_IP"
+echo "Nouvelle IP du backend : $NEW_IP"
 
 # Mettre à jour le ConfigMap avec la nouvelle IP
 kubectl create configmap frontend-config --from-literal=REACT_APP_API_URL="http://$NEW_IP:3001" --dry-run=client -o yaml | kubectl apply -f -
 
-echo "✅ ConfigMap mis à jour avec succès !"
+echo "ConfigMap mis à jour avec succès !"
 
 # Redémarrer proprement le pod du frontend
 kubectl rollout restart deployment front-deployment
 
-echo "✅ Le frontend a été redémarré proprement !"

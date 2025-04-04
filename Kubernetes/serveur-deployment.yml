@@ -13,29 +13,33 @@ spec:
         app: serveur
     spec:
       containers:
-      - name: serveur
-        image: hamzzza/node-redis:v4
-        ports:
-        - containerPort: 3001
-        resources:
-          requests:
-            cpu: 100m        # Demande 100m de CPU par pod
-            memory: 128Mi     # Demande 128Mi de mémoire par pod
-          limits:
-            cpu: 150m         # Limite 500m de CPU par pod
-            memory: 300Mi     # Limite 512Mi de mémoire par pod
+        - name: serveur
+          image: hamzzza/node-redis:v4
+          ports:
+            - containerPort: 3001
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
   name: serveur-service
+  annotations:
+    prometheus.io/scrape: "true"     # Active le scraping
+    prometheus.io/port: "3001"       # Port de votre serveur
+    prometheus.io/path: "/metrics"   # Endpoint des métriques
 spec:
   selector:
     app: serveur
   ports:
-  - protocol: TCP
-    port: 3001
-    targetPort: 3001
+    - protocol: TCP
+      port: 3001
+      targetPort: 3001
   type: LoadBalancer
-

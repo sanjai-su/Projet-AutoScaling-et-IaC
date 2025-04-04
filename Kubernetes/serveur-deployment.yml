@@ -1,22 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: serveur-deployment
+  name: serveur-deployment
 spec:
-    replicas: 3
-    selector:
-      matchLabels:
-         app: serveur
-    template: 
-      metadata:
-         labels:
-           app: serveur
-      spec:
-         containers: 
-         - name: serveur
-           image: hamzzza/node-redis:v4
-           ports:
-             - containerPort: 3001
+  replicas: 3
+  selector:
+    matchLabels:
+      app: serveur
+  template:
+    metadata:
+      labels:
+        app: serveur
+    spec:
+      containers:
+      - name: serveur
+        image: hamzzza/node-redis:v4
+        ports:
+        - containerPort: 3001
+        resources:
+          requests:
+            cpu: 100m        # Demande 100m de CPU par pod
+            memory: 128Mi     # Demande 128Mi de mémoire par pod
+          limits:
+            cpu: 150m         # Limite 500m de CPU par pod
+            memory: 300Mi     # Limite 512Mi de mémoire par pod
 ---
 
 apiVersion: v1
@@ -27,7 +34,8 @@ spec:
   selector:
     app: serveur
   ports:
-    - protocol: TCP
-      port: 3001
-      targetPort: 3001
+  - protocol: TCP
+    port: 3001
+    targetPort: 3001
   type: LoadBalancer
+

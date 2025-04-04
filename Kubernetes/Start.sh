@@ -9,7 +9,6 @@ kubectl apply -f front-deployment.yml
 kubectl apply -f prometheus-deployment.yml
 kubectl apply -f graphana.yml
 
-
 # Attendre que les services soient bien créés avant de mettre à jour le ConfigMap
 sleep 10
 

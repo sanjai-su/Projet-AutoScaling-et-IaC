@@ -24,7 +24,7 @@ Une fois le tunnel actif, exécutez cette commande dans un autre terminal differ
 ```bash
 ./Start.sh
 ```
-
+Il est possible que les deploiments mettent du temps a ce lancer.
 ---
 
 ### 3. Tester le comportement de l’autoscaler

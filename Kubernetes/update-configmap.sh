@@ -5,7 +5,7 @@ NEW_IP=$(kubectl get svc serveur-service -o jsonpath='{.status.loadBalancer.ingr
 
 # Vérifier si l'IP a bien été récupérée
 if [ -z "$NEW_IP" ]; then
-    echo "❌ Impossible de récupérer l'IP du LoadBalancer. Assurez-vous que minikube tunnel est en cours d'exécution."
+    echo "Impossible de récupérer l'IP du LoadBalancer. Assurez-vous que minikube tunnel est en cours d'exécution."
     exit 1
 fi
 

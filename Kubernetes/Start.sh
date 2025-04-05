@@ -4,8 +4,8 @@ echo "Création des déploiements..."
 kubectl apply -f frontend-configmap.yml
 kubectl apply -f redis-deployment.yml
 kubectl apply -f redis-replica-deployment.yml
-Kubectl apply –f metrics-serveur.yml
-Kubectl apply –f horizontalpod.yml
+kubectl apply -f metrics-server.yaml
+kubectl apply -f horizontalpod.yml
 kubectl apply -f serveur-deployment.yml
 kubectl apply -f front-deployment.yml
 kubectl apply -f prometheus-deployment.yml

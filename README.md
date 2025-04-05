@@ -1,6 +1,7 @@
 # Projet AutoScaling et IaC
 
 Pour créer l'infrastructure, nous avons mis en place des scripts d'automatisation.
+Pour pouvoir les utiliser placez vous dans le repertoire Kubernetes.
 Penser a faire chmod +x sur les scripts pour donner les droits d'execution.
 
 ## Étapes à suivre :
@@ -34,7 +35,7 @@ Un script Bash développé pour générer de la charge artificielle sur le backe
 
 Dans un terminal on lance
 ```bash
-kubectl get hpa –A
+kubectl get hpa -A
 ```
 Puis dans un autre on lance le script, stress-backend.sh :
 

@@ -26,6 +26,7 @@ Une fois le tunnel actif, exécutez cette commande dans un autre terminal differ
 ./Start.sh
 ```
 Il est possible que les deploiments mettent du temps a ce lancer.
+Bien verifier que tous les pods soit ready.
 ---
 
 ### 3. Tester le comportement de l’autoscaler
@@ -37,12 +38,15 @@ Dans un terminal on lance
 ```bash
 kubectl get hpa -A
 ```
+
 Puis dans un autre on lance le script, stress-backend.sh :
 
 
 ```bash
 ./stress-backend.sh
 ```
+
+Apres avoir lancer stress-backend, lancer plusieurs fois la commande kubectl get hpa -A car au début, le nombre de réplicas est minimal, mais au bout d’un certain temps, l’augmentation de l’utilisation du CPU entraîne automatiquement le déploiement de réplicas supplémentaires.
 ---
 
 ### 4. Accéder au front-end
@@ -67,7 +71,25 @@ Vous aurez accès à l'interface front.
 
 ---
 
-### 5. Accéder à Grafana
+### 5. Accéder à Prometheus
+
+Même manipulation que pour le front :
+
+- Récupérez l’IP et le port du service Prometheus :
+
+  ```bash
+  kubectl get services
+  ```
+
+- Ouvrez votre navigateur à :
+
+  ```
+  http://<IP>:9090
+  ```
+
+---
+
+### 6. Accéder à Grafana
 
 Même manipulation que pour le front :
 
@@ -80,8 +102,7 @@ Même manipulation que pour le front :
 - Ouvrez votre navigateur à :
 
   ```
-  http://<IP>:<PORT>
+  http://<IP>:3000
   ```
 
 ---
-
